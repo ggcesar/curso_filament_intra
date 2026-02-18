@@ -6,6 +6,8 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Foundation\Auth\User as Authenticatable;
 use Illuminate\Notifications\Notifiable;
+use Nnjeim\World\Models\Country;
+
 
 class User extends Authenticatable
 {
@@ -21,6 +23,11 @@ class User extends Authenticatable
         'name',
         'email',
         'password',
+        'country_id',
+        'state_id',
+        'city_id',
+        'address',
+        'postal_code',
     ];
 
     /**
@@ -45,4 +52,22 @@ class User extends Authenticatable
             'password' => 'hashed',
         ];
     }
+
+    public function country()
+        {
+            return $this->belongsTo(Country::class);
+    }
+     public function calendars(){
+        return $this->belongsToMany(Calendar::class);
+    }
+    public function departament(){
+        return $this->belongsToMany(Departament::class);
+    }
+    public function holidays(){
+        return $this->hasMany(Holiday::class);
+    }
+    public function timesheets(){
+        return $this->hasMany(Timesheet::class);
+    }
 }
+
