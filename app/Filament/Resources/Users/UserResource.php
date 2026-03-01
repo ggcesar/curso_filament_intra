@@ -22,7 +22,7 @@ class UserResource extends Resource
     protected static ?string $navigationLabel = 'Employees';
     protected static string|BackedEnum|null $navigationIcon = 'heroicon-o-user-group';
     protected static string|UnitEnum|null $navigationGroup = 'Employees Management';
-    protected static ?int $navigationSort = 2;
+    protected static ?int $navigationSort = 3;
 
     protected static ?string $recordTitleAttribute = 'name';
 

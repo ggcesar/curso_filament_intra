@@ -1,39 +1,43 @@
 <?php
 
-namespace App\Filament\Resources\Timesheets\Tables;
+namespace App\Filament\Personal\Resources\Holidays\Tables;
 
 use Filament\Actions\BulkActionGroup;
 use Filament\Actions\DeleteAction;
 use Filament\Actions\DeleteBulkAction;
 use Filament\Actions\EditAction;
+use Filament\Tables\Table;
 use Filament\Tables\Columns\TextColumn;
 use Filament\Tables\Filters\SelectFilter;
-use Filament\Tables\Table;
+use Filament\Forms\Components\Select;
 
-class TimesheetsTable
+class HolidaysTable
 {
     public static function configure(Table $table): Table
     {
         return $table
             ->columns([
-                TextColumn::make('calendar.name')
-                    ->sortable()
-                    ->searchable(),
+                //
+                 TextColumn::make('calendar.name')
+                    ->numeric()
+                    ->sortable(),
                 TextColumn::make('user.name')
-                    ->sortable()
-                    ->searchable(),
+                    ->numeric()
+                    ->sortable(),
+                TextColumn::make('day')
+                    ->date()
+                    ->sortable(),
                 TextColumn::make('type')
+                    ->badge()
+                    ->color(fn (string $state): string => match ($state) {
+                        'pending' => 'gray',
+                        'approved' => 'success',
+                        'decline' => 'danger',
+                    })
                     ->searchable(),
-                TextColumn::make('day_in')
-                    ->dateTime()
-                    ->sortable(),
-                TextColumn::make('day_out')
-                    ->dateTime()
-                    ->sortable(),
                 TextColumn::make('created_at')
                     ->dateTime()
                     ->sortable()
-                    ->searchable()
                     ->toggleable(isToggledHiddenByDefault: true),
                 TextColumn::make('updated_at')
                     ->dateTime()
@@ -41,12 +45,14 @@ class TimesheetsTable
                     ->toggleable(isToggledHiddenByDefault: true),
             ])
             ->filters([
-                SelectFilter::make('type')
+                //
+                 SelectFilter::make('type')
                     ->options([
-                        'work' => 'Working',
-                        'pause' => 'Reviewing',
-                    ]),
-                SelectFilter::make('calendar_id')
+                        'pending' => 'Pending',
+                        'approved' => 'Approved',
+                        'decline' => 'Decline',
+                    ])
+                    ->searchable(),
             ])
             ->recordActions([
                 EditAction::make(),

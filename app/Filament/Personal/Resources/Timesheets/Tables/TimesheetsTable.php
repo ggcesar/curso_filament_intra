@@ -1,14 +1,14 @@
 <?php
 
-namespace App\Filament\Resources\Timesheets\Tables;
+namespace App\Filament\Personal\Resources\Timesheets\Tables;
 
 use Filament\Actions\BulkActionGroup;
-use Filament\Actions\DeleteAction;
 use Filament\Actions\DeleteBulkAction;
+use Filament\Actions\DeleteAction;
 use Filament\Actions\EditAction;
+use Filament\Tables\Table;
 use Filament\Tables\Columns\TextColumn;
 use Filament\Tables\Filters\SelectFilter;
-use Filament\Tables\Table;
 
 class TimesheetsTable
 {

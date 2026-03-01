@@ -20,7 +20,7 @@ class CalendarResource extends Resource
     protected static ?string $model = Calendar::class;
     protected static string|UnitEnum|null $navigationGroup = 'Systems Management';
     protected static string|BackedEnum|null $navigationIcon = 'heroicon-o-calendar';
-    protected static ?int $navigationSort = 2;
+    protected static ?int $navigationSort = 1;
 
 
     protected static ?string $recordTitleAttribute = 'name';

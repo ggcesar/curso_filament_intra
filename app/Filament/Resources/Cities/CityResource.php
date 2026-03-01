@@ -20,7 +20,7 @@ class CityResource extends Resource
     protected static ?string $model = City::class;
     protected static string|UnitEnum|null $navigationGroup = 'Systems Management';
     protected static string|BackedEnum|null $navigationIcon = 'heroicon-o-building-office-2';
-    protected static ?int $navigationSort = 7;
+    protected static ?int $navigationSort = 5;
 
     protected static ?string $recordTitleAttribute = 'name';
 
